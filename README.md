@@ -1,2 +1,9 @@
-# sum-of-sales-project-eval-test-96ca0b06
-Auto-generated repo for task: sum-of-sales-project-eval-test
+# sum-of-sales-project-eval-test
+
+Round: 1
+
+Brief:
+This is a test to verify the evaluation payload.
+
+This app should use the following attachments:
+- data.csv
