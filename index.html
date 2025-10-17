@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated App</title>
+    <style>body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f0f0f0;
+}
+h1 {
+  color: #333;
+}
+#fileInput {
+  margin-bottom: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #eee;
+}</style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evaluation Payload Test</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1>Data Table</h1>
+<input type="file" id="fileInput" accept=".csv" />
+<table id="dataTable">
+  <thead>
+    <tr id="tableHeader"></tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+<script src="script.js"></script>
+</body>
+</html>
+    <script>document.getElementById('fileInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const text = e.target.result;
+      const lines = text.trim().split(/\r?\n/);
+      if (lines.length) {
+        const headers = lines[0].split(',');
+        const tbody = document.getElementById('tableBody');
+        const theadRow = document.getElementById('tableHeader');
+        theadRow.innerHTML = '';
+        headers.forEach(header => {
+          const th = document.createElement('th');
+          th.textContent = header;
+          theadRow.appendChild(th);
+        });
+        tbody.innerHTML = '';
+        for (let i = 1; i < lines.length; i++) {
+          const rowData = lines[i].split(',');
+          const row = document.createElement('tr');
+          rowData.forEach(cell => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+            row.appendChild(td);
+          });
+          tbody.appendChild(row);
+        }
+      }
+    };
+    reader.readAsText(file);
+  }
+});</script>
+</body>
+</html>
